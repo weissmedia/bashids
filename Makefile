@@ -8,7 +8,7 @@ all: help
 SHELL:=bash
 
 # Artifact settings
-export APP_NAME=hashid-bashids
+export APP_NAME=hashid
 export OWNER?=$(DOCKER_OWNER)
 export DOCKER_REPOSITORY?=$(DOCKER_REPOSITORY=)
 
@@ -30,12 +30,12 @@ docker-login: ## auto login to docker repository
 	docker login $(DOCKER_LOGIN_CREDENTIALS) $(DOCKER_REPOSITORY)
 
 ##@ Containerizing
-build-compose: DARGS?=--load
-build-compose: ## build the image for the system architecture
+build: DARGS?=--load
+build: ## build the image for the system architecture
 	docker buildx bake --no-cache $(DARGS) --set *.platform=$(DOCKER_DEFAULT_PLATFORM)
 
-push-compose: ## push the multi image with all tags
-	$(MAKE) build-compose DARGS=--push
+push: ## push the multi image with all tags
+	$(MAKE) build DARGS=--push
 
 test:
 	docker run -it $(DOCKER_REPOSITORY)/$(OWNER)/$(APP_NAME) bashids -e -s "this is my salt" 1 2 3

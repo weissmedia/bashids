@@ -65,7 +65,7 @@ $ bats tests.bats
 
 ### Build and Push
 ```bash
-$ make push-compose
+$ make push
 ```
 
 ### Test
