@@ -1,0 +1,14 @@
+---
+services:
+
+  hashid-bashids:
+    build:
+      context: .
+      args:
+        image: ellerbrock/alpine-bash-curl-ssl
+      x-bake:
+        tags:
+          - ${DOCKER_REPOSITORY}/${OWNER}/${APP_NAME}:latest
+          - ${DOCKER_REPOSITORY}/${OWNER}/${APP_NAME}:v1.0.0
+    image: ${DOCKER_REPOSITORY}/${OWNER}/${APP_NAME}:v1.0.0
+    container_name: hashid-bashids

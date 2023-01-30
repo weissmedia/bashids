@@ -61,3 +61,15 @@ $ bats tests.bats
 
 24 tests, 0 failures
 ```
+## Docker
+
+### Build and Push
+```bash
+$ make push-compose
+```
+
+### Test
+```bash
+$ make test
+```
+
